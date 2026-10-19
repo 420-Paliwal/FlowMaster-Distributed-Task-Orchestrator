@@ -1,0 +1,19 @@
+name: loan
+version: 1
+
+steps:
+  - name: verification
+    service: verification
+    command_topic: workflow.commands
+    result_topic: verification.results
+    success_event: VERIFICATION_PASSED
+    failure_event: VERIFICATION_FAILED
+    compensation_topic: verification.compensation
+
+  - name: credit
+    service: credit
+    command_topic: credit.commands
+    result_topic: credit.results
+    success_event: CREDIT_APPROVED
+    failure_event: CREDIT_REJECTED
+    compensation_topic: credit.compensation
